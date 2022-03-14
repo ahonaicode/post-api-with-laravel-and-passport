@@ -35,12 +35,12 @@ class OrderController extends Controller
      */
     public function store(StoreOrderRequest $request)
     {
-        
+
         $response['success'] = true;
         $response['message'] = "A New Order Created";
         $result = auth('api')->user()->Order()->create($request->all());
         $response['data'] = new OrderResource($result);
-        return response()->json($response);
+        return response()->json($response, 201);
     }
 
     /**
@@ -68,7 +68,7 @@ class OrderController extends Controller
     {
         $Order = auth('api')->user()->Order()->findOrFail($id);
         $response['success'] = true;
-        $response['message'] = "A Order With ID : ".$id." Updated";
+        $response['message'] = "A Order With ID : " . $id . " Updated";
         $result = $Order->update($request->all());
         $response['data'] = new OrderResource($Order);
         return response()->json($response);
@@ -85,7 +85,7 @@ class OrderController extends Controller
         $Order = auth('api')->user()->Order()->findOrFail($id);
         $Order->delete();
         $response['success'] = true;
-        $response['message'] = "A Order With ID : ".$id." Deleted";
+        $response['message'] = "A Order With ID : " . $id . " Deleted";
         return response()->json($response);
     }
 }

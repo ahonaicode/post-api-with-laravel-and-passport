@@ -19,7 +19,7 @@ class AuthController extends Controller
         $data['password'] = bcrypt($request->password);
         $user = User::create($data);
         $token = $user->createToken('API Token')->accessToken;
-        return response([ 'user' => $user, 'token' => $token]);
+        return response([ 'user' => $user, 'token' => $token], 201);
     }
 
     public function login(Request $request)

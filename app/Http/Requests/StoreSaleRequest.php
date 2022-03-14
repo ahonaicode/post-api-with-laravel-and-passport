@@ -25,7 +25,7 @@ class StoreSaleRequest extends FormRequest
     {
         return [
             'item_id' => 'required|exists:items,id',
-            'supplier_id' => 'required|exists:clients,id',
+            'client_id' => 'required|exists:clients,id',
             'qty' => 'required|integer|between:1,999',
         ];
     }

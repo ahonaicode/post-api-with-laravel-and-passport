@@ -13,6 +13,6 @@ class ItemSeeder extends Seeder
      */
     public function run()
     {
-        Item::create(['item_name'=>'My Name']);
+        Item::create(['item_name'=>'BNIT-001']);
     }
 }

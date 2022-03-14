@@ -35,12 +35,14 @@ class SaleController extends Controller
      */
     public function store(StoreSaleRequest $request)
     {
-        
+
         $response['success'] = true;
         $response['message'] = "A New Sale Created";
         $result = auth('api')->user()->sale()->create($request->all());
+        //{status}: warehouse qty {qty}
+        \Log::info('Yes : Warehouse Qty 10');
         $response['data'] = new SaleResource($result);
-        return response()->json($response);
+        return response()->json($response, 201);
     }
 
     /**
@@ -68,7 +70,7 @@ class SaleController extends Controller
     {
         $sale = auth('api')->user()->sale()->findOrFail($id);
         $response['success'] = true;
-        $response['message'] = "A Sale With ID : ".$id." Updated";
+        $response['message'] = "A Sale With ID : " . $id . " Updated";
         $result = $sale->update($request->all());
         $response['data'] = new SaleResource($sale);
         return response()->json($response);
@@ -85,7 +87,7 @@ class SaleController extends Controller
         $sale = auth('api')->user()->sale()->findOrFail($id);
         $sale->delete();
         $response['success'] = true;
-        $response['message'] = "A Sale With ID : ".$id." Deleted";
+        $response['message'] = "A Sale With ID : " . $id . " Deleted";
         return response()->json($response);
     }
 }
