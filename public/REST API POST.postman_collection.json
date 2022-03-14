@@ -477,12 +477,12 @@
 					"formdata": [
 						{
 							"key": "name",
-							"value": "Nuris Akbar",
+							"value": "Test Account",
 							"type": "text"
 						},
 						{
 							"key": "email",
-							"value": "nuris.akbar@gmail.com",
+							"value": "testaccount@gmail.com",
 							"type": "text"
 						},
 						{
@@ -528,7 +528,7 @@
 					"formdata": [
 						{
 							"key": "email",
-							"value": "nuris.akbar@gmail.com",
+							"value": "testaccount@gmail.com",
 							"type": "text"
 						},
 						{
