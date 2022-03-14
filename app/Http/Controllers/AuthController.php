@@ -13,14 +13,14 @@ class AuthController extends Controller
     public function register(RegisterRequest $request)
     {
         $data['password'] = bcrypt($request->password);
-        $user = User::create($data);
+        $user = User::create($request->all());
         $token = $user->createToken('API Token')->accessToken;
         return response([ 'user' => $user, 'token' => $token], 201);
     }
 
     public function login(LoginRequest $request)
     {
-        if (!auth()->attempt($data)) {
+        if (!auth()->attempt($request->all())) {
             return response(['error_message' => 'Incorrect Details. 
             Please try again']);
         }
