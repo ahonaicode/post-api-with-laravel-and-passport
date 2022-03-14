@@ -15,10 +15,13 @@ class CreateStocksTable extends Migration
     {
         Schema::create('stocks', function (Blueprint $table) {
             $table->id();
-            $table->integer('warehouse_id');
-            $table->integer('item_id');
+            $table->unsignedBigInteger('warehouse_id');
+            $table->unsignedBigInteger('item_id');
             $table->integer('stock');
             $table->timestamps();
+
+            $table->foreign('item_id')->references('id')->on('items');
+            $table->foreign('warehouse_id')->references('id')->on('warehouses');
         });
     }
 
